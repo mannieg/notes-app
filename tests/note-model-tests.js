@@ -7,4 +7,5 @@ function testNoteStoresText() {
   assert.isTrue(note.getText() === "My favourite language is JavaScript");
 }
 
+
 testNoteStoresText();

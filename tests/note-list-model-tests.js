@@ -2,10 +2,10 @@ var assert = require("./assert");
 var Note = require("../src/models/note-model");
 var NoteList = require("../src/models/note-list-model");
 
-var noteList = new NoteList();
+var noteList = new NoteList(Note);
 
 function testNoteListStoresNotes() {
-  noteList.storeNote(Note, "test");
+  noteList.storeNote("test");
   var arr = noteList.getNotes();
 
   for (var i = 0; i < arr.length; i++) {
