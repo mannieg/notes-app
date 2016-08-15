@@ -6,13 +6,15 @@
 //   }
 //   exports.exclaim = exclaim;
 // })(this);
-var note = new Note();
 
+(function (exports) {
 
-  function Note(text) {
-    this.text = text;
+  function Note(string) {
+    this.text = string;
   }
 
   Note.prototype.getText = function() {
     return this.text;
   };
+  module.exports = Note;
+})(this);
