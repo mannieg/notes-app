@@ -4,9 +4,11 @@
   }
 
   NoteView.prototype.getHTML = function () {
+    var html = "<ul>";
     this.noteList.getNotes().forEach( function(current_value) {
-      console.log(current_value.text);
+      html += "<li><div>" + current_value.text + "</div></li>";
     });
+    return html + "</ul>";
   };
 
   module.exports = NoteView;
