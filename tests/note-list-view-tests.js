@@ -11,7 +11,7 @@ function testNoteListDisplaysNotes() {
   var noteView = new NoteView(noteList);
   var htmlTest = "<li><div>Pizza</div></li>";
   //assert.isTrue(noteView.getHTML() === htmlTest);
-  console.log(noteView.getHTML());
+  noteView.getHTML();
 }
 
 testNoteListDisplaysNotes();
