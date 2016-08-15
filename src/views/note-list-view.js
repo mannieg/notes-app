@@ -4,9 +4,11 @@
   }
 
   NoteView.prototype.getHTML = function () {
+    console.log(this.noteList);
     for(var note in this.noteList.getNotes) {
       return "note";
     }
   };
-  modules.exports = NoteView;
-})
+
+  module.exports = NoteView;
+})(this);
