@@ -1,5 +1,5 @@
 var assert = require("./assert");
-var Note = require("../note-model");
+var Note = require("../models/note-model");
 
 
 function testNoteStoresText() {
