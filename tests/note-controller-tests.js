@@ -1,27 +1,21 @@
-var modules = require('./modules');
+(function(exports) {
 
-var assert = modules.assert;
-var Note = modules.Note;
-var NoteList = modules.NoteList;
-var NoteController = modules.NoteController;
-var NoteView = modules.NoteView;
+  var noteController = new NoteController(NoteList, Note, NoteView);
 
-// Custom Mocks of the document at global scope
-var app = {innerHTML: ""};
-function Document() {}
-Document.prototype.getElementById = function(id) {return app;};
-document = new Document();
+  // Custom Mocks of the document at global scope
+  var app = {innerHTML: ""};
 
-var noteController = new NoteController(NoteList, Note, NoteView);
+  it("can instantiate note controller", function() {
+    assert.isTrue(noteController instanceof NoteController);
+  });
 
-function canInstantiateNoteController() {
-  assert.isTrue(noteController instanceof NoteController);
-}
-
-function canModifyAppDom() {
+  it("can modify app dom", function() {
+    var div = document.getElementById("tests");
+    var app = document.createElement('div');
+    app.setAttribute('id', 'app');
+    div.appendChild(app);
     noteController.printNotes();
     assert.isTrue(app.innerHTML === "<ul><li><div>Favorite drink: seltzer</div></li></ul>");
-}
+  });
 
-canInstantiateNoteController();
-canModifyAppDom();
+})(this);

@@ -1,13 +1,8 @@
-var modules = require("./modules");
+(function(exports) {
 
-var Note = modules.Note;
-var assert = modules.assert;
+  it("Note stores text", function() {
+    var note = new Note("My favourite language is JavaScript");
+    assert.isTrue(note.getText() === "My favourite language is JavaScript");
+  });
 
-
-function testNoteStoresText() {
-  var note = new Note("My favourite language is JavaScript");
-  assert.isTrue(note.getText() === "My favourite language is JavaScript");
-}
-
-
-testNoteStoresText();
+})(this);
