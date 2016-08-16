@@ -1,5 +1,5 @@
 var assert = require("./assert");
-var Note = require("../models/note-model");
+var Note = require("../models/note-model").Note;
 
 (function(exports) {
   var note = new Note("My favourite language is JavaScript");
