@@ -12,5 +12,6 @@
     return this.noteArray;
   };
 
-  module.exports = NoteList;
+  // module.exports = NoteList;
+  exports.NoteList = NoteList;
 })(this);

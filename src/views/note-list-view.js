@@ -11,5 +11,7 @@
     return html + "</ul>";
   };
 
-  module.exports = NoteView;
+  // module.exports = NoteView;
+  exports.NoteView = NoteView;
+  
 })(this);

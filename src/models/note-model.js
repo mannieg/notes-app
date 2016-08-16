@@ -8,5 +8,6 @@
     return this.text;
   };
 
-  module.exports = Note;
+  // module.exports = Note;
+  exports.Note = Note;
 })(this);
