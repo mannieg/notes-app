@@ -1,17 +1,18 @@
 (function(exports){
 
-  function NoteController(NoteList){
+  function NoteController(NoteList, Note, NoteView){
     this._noteList = new NoteList(Note);
-    console.log(this._noteList);
     this._noteList.storeNote("Favorite drink: seltzer");
     this._noteView = new NoteView(this._noteList);
-  };
+  }
 
   NoteController.prototype.printNotes = function(){
-    var app = document.getElementById('app');
-    app.innerHTML = this._noteView.getHTML();
+    document.getElementById('app').innerHTML = this._noteView.getHTML();
   };
 
-  exports.NoteController = NoteController;
+  if (typeof module !== 'undefined')
+    module.exports = NoteController;
+  else
+    exports.NoteController = NoteController;
 
 })(this);

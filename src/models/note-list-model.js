@@ -12,6 +12,9 @@
     return this.noteArray;
   };
 
-  // module.exports = NoteList;
-  exports.NoteList = NoteList;
+  if (typeof module !== 'undefined')
+    module.exports = NoteList;
+  else
+    exports.NoteList = NoteList;
+    
 })(this);

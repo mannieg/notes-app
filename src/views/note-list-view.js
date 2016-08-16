@@ -11,7 +11,9 @@
     return html + "</ul>";
   };
 
-  // module.exports = NoteView;
-  exports.NoteView = NoteView;
-  
+  if (typeof module !== 'undefined')
+    module.exports = NoteView;
+  else
+    exports.NoteView = NoteView;
+
 })(this);

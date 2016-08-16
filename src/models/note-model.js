@@ -8,6 +8,9 @@
     return this.text;
   };
 
-  // module.exports = Note;
-  exports.Note = Note;
+  if (typeof module !== 'undefined')
+    module.exports = Note;
+  else
+    exports.Note = Note;
+
 })(this);
