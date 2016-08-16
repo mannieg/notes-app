@@ -1,14 +1,11 @@
-(function(exports) {
+(function (exports) {
+
   function NoteList() {
-    this.noteArray = [];
+    this.notesArray = [];
   }
 
-  NoteList.prototype.storeNote = function(Note, string) {
-    this.noteArray.push(new Note(string));
+  NoteList.prototype.addNote = function(text) {
+    this.notesArray.push(text);
   };
-
-  NoteList.prototype.getNotes = function() {
-    return this.noteArray;
-  };
-  module.exports = NoteList;
+  exports.NoteList = NoteList;
 })(this);
