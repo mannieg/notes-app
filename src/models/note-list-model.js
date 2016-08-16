@@ -16,5 +16,5 @@
     module.exports = NoteList;
   else
     exports.NoteList = NoteList;
-    
+
 })(this);
