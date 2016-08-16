@@ -5,13 +5,27 @@ var NoteList = modules.NoteList;
 var NoteView = modules.NoteView;
 var assert = modules.assert;
 
-function testNoteListDisplaysNotes() {
+var noteList = new NoteList(Note);
+var noteView = new NoteView(noteList);
 
-  var noteList = new NoteList(Note);
+function testNoteListReturnsEmptyList() {
+  var htmlTest = "<ul></ul>";
+  assert.isTrue(noteView.getHTML() === htmlTest);
+}
+
+function testNoteListDisplayANote() {
   noteList.storeNote("Pizza");
-  var noteView = new NoteView(noteList);
   var htmlTest = "<ul><li><div>Pizza</div></li></ul>";
   assert.isTrue(noteView.getHTML() === htmlTest);
 }
 
-testNoteListDisplaysNotes();
+function testNoteListDisplayesMultipleNotes() {
+  noteList.storeNote("Pasta");
+  noteList.storeNote("Cake");
+  var htmlTest = "<ul><li><div>Pizza</div></li><li><div>Pasta</div></li><li><div>Cake</div></li></ul>";
+  assert.isTrue(noteView.getHTML() === htmlTest);
+}
+
+testNoteListReturnsEmptyList();
+testNoteListDisplayANote();
+testNoteListDisplayesMultipleNotes();
