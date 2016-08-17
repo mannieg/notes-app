@@ -4,5 +4,5 @@ describe("Note Model", function() {
     var note = new Note("My favourite language is JavaScript");
     isTrue(note.getNote() === "My favourite language is JavaScript");
   });
-  
+
 });
