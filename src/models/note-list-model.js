@@ -1,7 +1,9 @@
 (function(exports) {
+
   function NoteList() {
     this.noteArray = [];
   }
+
 
   NoteList.prototype.storeNote = function (string) {
     this.noteArray.push(new Note(string));

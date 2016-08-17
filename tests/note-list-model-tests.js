@@ -1,7 +1,13 @@
 (function(exports) {
-  var noteList = new NoteList(Note);
+
+  var noteList;
+
+  beforeEach = function(){
+    noteList = new NoteList(Note);
+  };
 
   it("Note list can store notes", function() {
+    beforeEach();
     noteList.storeNote("test");
     var arr = noteList.getNotes();
 
