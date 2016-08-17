@@ -2,11 +2,11 @@
 
   var noteController = new NoteController(NoteList);
 
-  it("can instantiate note controller", function() {
+  it("Can instantiate note controller", function() {
     assert.isTrue(noteController instanceof NoteController);
   });
 
-  it("can modify app dom", function() {
+  it("Can modify app dom", function() {
     var appDiv = document.createElement('div');
     appDiv.setAttribute('id', 'app');
     document.getElementById = function() {
