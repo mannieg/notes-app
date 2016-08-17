@@ -1,16 +1,17 @@
 (function(exports) {
 
   function ListView(list) {
-    this.listView = list;
+    this.currentList = list;
   }
 
   ListView.prototype.htmlList = function() {
-    var listToHtml = this.listView.getList();
 
+    var listToHtml = this.currentList.getAllNotes();
     var mappedList = listToHtml.map(function(note) {
-      return "<li>" + note.getNote().text + "</li>";
+      var text = note.getText();
+      return "<li>" + text + "</li>";
     });
-    
+
     return '<ul>' + mappedList.join('') + '</ul>';
   }
 
