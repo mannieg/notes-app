@@ -7,13 +7,14 @@
   });
 
   it("can modify app dom", function() {
-    var div = document.getElementById("tests");
-    var app = document.createElement('div');
-    app.setAttribute('id', 'app');
-    app.style.display = "none";
-    div.appendChild(app);
+    var appDiv = document.createElement('div');
+    appDiv.setAttribute('id', 'app');
+    document.getElementById = function() {
+      return appDiv;
+    };
     noteController.printNotes();
-    assert.isTrue(app.innerHTML === "<ul><li><div>Favorite drink: seltzer</div></li></ul>");
+    document.getElementById = document.__proto__.getElementById;
+    assert.isTrue(appDiv.innerHTML === "<ul><li><div>Favorite drink: seltzer</div></li></ul>");
   });
 
 })(this);
