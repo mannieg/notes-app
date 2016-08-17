@@ -1,3 +1,3 @@
 
-var controller = new NoteController(NoteList, Note, NoteView);
+var controller = new NoteController(NoteList);
 controller.printNotes();

@@ -29,7 +29,7 @@
     div.appendChild(element);
 
     if (color === "green")
-      element.setAttribute('class', 'success')
+      element.setAttribute('class', 'success');
     else if (color === "red")
       element.setAttribute('class', 'failed');
     else

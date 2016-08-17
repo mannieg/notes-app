@@ -1,6 +1,6 @@
 (function(exports) {
 
-  var noteController = new NoteController(NoteList, Note, NoteView);
+  var noteController = new NoteController(NoteList);
 
   it("can instantiate note controller", function() {
     assert.isTrue(noteController instanceof NoteController);
