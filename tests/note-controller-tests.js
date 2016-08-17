@@ -14,7 +14,7 @@
     };
     noteController.printNotes();
     document.getElementById = document.__proto__.getElementById;
-    assert.isTrue(appDiv.innerHTML === "<ul><li><div>Favorite drink: seltzer</div></li></ul>");
+    assert.isTrue(appDiv.innerHTML === "<ul><li><div>Favorite drink: selt</div></li></ul>");
   });
 
 })(this);
