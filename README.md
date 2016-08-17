@@ -1,1 +1,3 @@
-# notes_js
+
+# Notes App - Javascript
+ Work in progress...

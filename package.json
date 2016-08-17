@@ -1,0 +1,25 @@
+{
+  "name": "notes_app",
+  "version": "1.0.0",
+  "description": "Work in progress...",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rob-rls/notes_app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rob-rls/notes_app/issues"
+  },
+  "homepage": "https://github.com/Rob-rls/notes_app#readme",
+  "dependencies": {
+    "http-server": "^0.9.0"
+  }
+}
