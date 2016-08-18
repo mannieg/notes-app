@@ -9,12 +9,13 @@
     var listToHtml = this.currentList.getAllNotes();
     var mappedList = listToHtml.map(function(note) {
       var text = note.getText().substring(0, 19);
-      return "<li>" + text + "</li>";
+      var anchor = '<a href="#' + note.id + '">';
+      return "<li>" + anchor + text + "</a></li>";
     });
 
     return '<ul>' + mappedList.join('') + '</ul>';
-  }
-  
-  exports.ListView = ListView
+  };
+
+  exports.ListView = ListView;
 
 })(this);

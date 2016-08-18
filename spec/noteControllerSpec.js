@@ -1,4 +1,18 @@
 describe("Note Controller", function() {
+  var div;
+
+  var mockAppDiv = function() {
+    div = document.createElement("div");
+    div.setAttribute("id", "app");
+
+    document.getElementById = function() {
+      return div;
+    }
+  }
+
+  var resetMockAppDiv = function() {
+    document.getElementById = document.__proto__.getElementById;
+  }
 
   it("can instantiated a note controller", function() {
     var controller = new noteController();
@@ -7,15 +21,22 @@ describe("Note Controller", function() {
 
   it("can display list content within app div", function() {
     var controller = new noteController();
-    var div = document.createElement("div");
-    div.setAttribute("id", "app");
-    
-    document.getElementById = function() {
-      return div;
-    }
-
+    mockAppDiv();
     controller.displayList();
-    document.getElementById = document.__proto__.getElementById;
+    isTrue(div.innerHTML === '<ul><li><a href="#10">Favourite drink: se</a></li></ul>');
+    resetMockAppDiv();
   });
 
-}); 
+  it("shows the full note when clicked", function() {
+    var controller = new noteController();
+    var note = new Note("Hello World!");
+    var list = new List(note);
+    mockAppDiv();
+    location.hash = '#0';
+    controller.displayNote();
+    console.log(div.innerHTML);
+    isTrue(div.innerHTML === "<div>Favourite drink: seltzer</div>");
+    resetMockAppDiv();
+  });
+
+});
