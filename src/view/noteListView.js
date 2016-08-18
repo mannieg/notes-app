@@ -8,7 +8,7 @@
 
     var listToHtml = this.currentList.getAllNotes();
     var mappedList = listToHtml.map(function(note) {
-      var text = note.getText();
+      var text = note.getText().substring(0, 19);
       return "<li>" + text + "</li>";
     });
 
