@@ -1,5 +1,5 @@
 describe("Note Controller", function() {
-  var div;
+  var div, submitBtn;
 
   var mockAppDiv = function() {
     div = document.createElement("div");
@@ -9,6 +9,15 @@ describe("Note Controller", function() {
       return div;
     };
   };
+
+  var mockSubmit = function() {
+    submitBtn = document.createElement("button");
+    submitBtn.setAttribute("id", "submit");
+
+    document.getElementById = function() {
+      return submitBtn;
+    };
+  }
 
   var resetMockAppDiv = function() {
     document.getElementById = document.__proto__.getElementById;
@@ -23,7 +32,7 @@ describe("Note Controller", function() {
     var controller = new noteController();
     mockAppDiv();
     controller.displayList();
-    isTrue(div.innerHTML === '<ul><li><a href="#0">Favourite drink: se</a></li></ul>');
+    isFalse(div.innerHTML === '<ul><li><a href="#0">Favourite drink: se</a></li></ul>');
     resetMockAppDiv();
   });
 

@@ -4,15 +4,14 @@
 
   function noteController() {
     list = new List();
-    note = new Note("Favourite drink: seltzer");
-    list.addNote(note);
-
     listView = new ListView(list);
 
     window.addEventListener("hashchange", this.displayNote);
-    document.getElementById('submit').addEventListener("click", function(event) {
-      onSubmit(event);
-    }, true);
+
+    if(document.getElementById('submit') !== null)
+      document.getElementById('submit').addEventListener("click", function(event) {
+        onSubmit(event);
+      }, true);
   }
 
   noteController.prototype.displayList = function() {
