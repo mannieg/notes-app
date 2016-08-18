@@ -10,6 +10,9 @@
     listView = new ListView(list);
 
     window.addEventListener("hashchange", this.displayNote);
+    document.getElementById('submit').addEventListener("click", function(event) {
+      onSubmit(event);
+    }, true);
   }
 
   noteController.prototype.displayList = function() {
@@ -19,6 +22,11 @@
   noteController.prototype.displayNote = function() {
     document.getElementById('app').innerHTML = getSingleNote();
   };
+
+  function onSubmit(event) {
+    event.preventDefault();
+    console.log(event);
+  }
 
   function getSingleNote() {
     var note = list.getAllNotes()[getIdFromUrl(window.location)];
