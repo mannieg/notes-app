@@ -8,6 +8,6 @@ describe("Note List Model", function() {
     list.addNote(note1);
     list.addNote(note2);
 
-    isTrue(list.getList().length === 2);
+    isTrue(list.getAllNotes().length === 2);
   });
 });

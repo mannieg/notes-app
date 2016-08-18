@@ -3,12 +3,11 @@
     this.listNotes = [];
   }
 
-  List.prototype.addNote = function(text) {
-    var note = new Note(text);
+  List.prototype.addNote = function(note) {
     this.listNotes.push(note);
   }
 
-  List.prototype.getList = function() {
+  List.prototype.getAllNotes = function() {
     return this.listNotes;
   }
 

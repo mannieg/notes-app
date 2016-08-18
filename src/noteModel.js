@@ -4,7 +4,7 @@
     this.text = text;
   }
 
-  Note.prototype.getNote = function() {
+  Note.prototype.getText = function() {
     return this.text;
   };
 
