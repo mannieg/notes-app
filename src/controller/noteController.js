@@ -26,6 +26,7 @@
   function onSubmit(event) {
     event.preventDefault();
     console.log(event);
+    console.dir(event.path[0].form[0].value);
   }
 
   function getSingleNote() {
