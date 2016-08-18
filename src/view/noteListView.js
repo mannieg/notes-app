@@ -14,7 +14,7 @@
 
     return '<ul>' + mappedList.join('') + '</ul>';
   }
-
+  
   exports.ListView = ListView
 
 })(this);
