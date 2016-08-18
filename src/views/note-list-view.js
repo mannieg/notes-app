@@ -6,7 +6,8 @@
   NoteView.prototype.getHTML = function () {
     var html = "<ul>";
     this.noteList.getNotes().forEach( function(current_value) {
-      html += "<li><div>" + current_value.text.substring(0,20) + "</div></li>";
+      html += "<li><div><a href=\"#" + current_value.id + "\">" +
+              current_value.text.substring(0,20) + "</a></div></li>";
     });
     return html + "</ul>";
   };

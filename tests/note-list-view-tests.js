@@ -1,9 +1,12 @@
 (function(exports) {
 
-  var noteView, noteView;
+  var noteView, noteView, note, lastId;
+
   beforeEach = function(){
     noteList = new NoteList();
     noteView = new NoteView(noteList);
+    note = new Note();
+    lastId = note.id + 1;
   };
 
   it("Note list returns empty list", function() {
@@ -20,14 +23,14 @@
 
     noteList.storeNote(dummyText);
     var outputLength = noteView.getHTML().length;
-    assert.isTrue(outputLength === 49);
+    assert.isTrue(outputLength === 66);
 
   });
 
   it("Note List displays a note", function() {
     beforeEach();
     noteList.storeNote("Pizza");
-    var htmlTest = "<ul><li><div>Pizza</div></li></ul>";
+    var htmlTest = "<ul><li><div><a href=\"#" + lastId + "\">Pizza</a></div></li></ul>";
     assert.isTrue(noteView.getHTML() === htmlTest);
   });
 
@@ -36,15 +39,16 @@
     noteList.storeNote("Pizza");
     noteList.storeNote("Pasta");
     noteList.storeNote("Cake");
-    var htmlTest = "<ul><li><div>Pizza</div></li><li><div>Pasta</div></li><li><div>Cake</div></li></ul>";
+    var htmlTest = "<ul><li><div><a href=\"#" + lastId + "\">Pizza</a>" +
+    "</div></li><li><div><a href=\"#" + (lastId + 1) + "\">Pasta</a></div></li>" +
+    "<li><div><a href=\"#" + (lastId + 2) + "\">Cake</a></div></li></ul>";
     assert.isTrue(noteView.getHTML() === htmlTest);
   });
 
-  it('links note to its url', function(){
+  it('Each note is assigned to a url', function(){
     beforeEach();
-    noteList.storeNote("Pizza");
-
-
+    noteList.storeNote("I like C#");
+    assert.isTrue(noteView.getHTML() === "<ul><li><div><a href=\"#"+ lastId +"\">I like C#</a></div></li></ul>");
   });
 
 })(this);
