@@ -8,10 +8,7 @@
 
     window.addEventListener("hashchange", this.displayNote);
 
-    if(document.getElementById('submit') !== null)
-      document.getElementById('submit').addEventListener("click", function(event) {
-        onSubmit(event);
-      }, true);
+    addSubmitEvent();
   }
 
   noteController.prototype.displayList = function() {
@@ -21,6 +18,13 @@
   noteController.prototype.displayNote = function() {
     document.getElementById('app').innerHTML = getSingleNote();
   };
+
+  function addSubmitEvent() {
+    if(document.getElementById('submit') !== null)
+      document.getElementById('submit').addEventListener("click", function(event) {
+        onSubmit(event);
+      }, true);
+  }
 
   function onSubmit(event) {
     event.preventDefault();
