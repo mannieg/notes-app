@@ -6,7 +6,6 @@
     list = new List();
     note = new Note("Favourite drink: seltzer");
     list.addNote(note);
-    list.addNote(new Note("Hello world!"));
 
     listView = new ListView(list);
 

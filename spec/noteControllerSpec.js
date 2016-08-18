@@ -7,12 +7,12 @@ describe("Note Controller", function() {
 
     document.getElementById = function() {
       return div;
-    }
-  }
+    };
+  };
 
   var resetMockAppDiv = function() {
     document.getElementById = document.__proto__.getElementById;
-  }
+  };
 
   it("can instantiated a note controller", function() {
     var controller = new noteController();
@@ -23,7 +23,7 @@ describe("Note Controller", function() {
     var controller = new noteController();
     mockAppDiv();
     controller.displayList();
-    isTrue(div.innerHTML === '<ul><li><a href="#10">Favourite drink: se</a></li></ul>');
+    isTrue(div.innerHTML === '<ul><li><a href="#0">Favourite drink: se</a></li></ul>');
     resetMockAppDiv();
   });
 
@@ -34,7 +34,7 @@ describe("Note Controller", function() {
     mockAppDiv();
     location.hash = '#0';
     controller.displayNote();
-    console.log(div.innerHTML);
+    history.pushState('', document.title, window.location.pathname);
     isTrue(div.innerHTML === "<div>Favourite drink: seltzer</div>");
     resetMockAppDiv();
   });
