@@ -8,15 +8,16 @@
 
 
   NoteListView.prototype.getHTML = function () {
-    var markup = "<ul><li><div>";
+    var markup = '<ul><li><div><a href="#';
     var notes_array = this._noteList.getNotes();
     if (notes_array.length === 0) {
       return "";
     } else {
       markup += notes_array.map(function(note) {
-        return note.getText().substr(0,20);
-      }).join("</div></li><li><div>");
-      return markup += "</div></li></ul>";
+        var note_id = note.id + '">' + note.getText().substr(0,20);
+        return note_id;
+      }).join('</a></div></li><li><div><a href="#');
+      return markup += '</a></div></li></ul>';
     }
   };
 

@@ -10,4 +10,5 @@ describe("Single Note View", function() {
     var single_note_view = new SingleNoteView(single_note);
     assert.isTrue(single_note_view.getNoteHTML() === "<div>Test</div>");
   });
+  
 });
