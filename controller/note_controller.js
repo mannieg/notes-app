@@ -1,39 +1,40 @@
 (function(exports) {
-  function NoteController(noteList) {
-    this._noteList = noteList;
+
+  var singleNoteView, notelist, noteMarkup;
+
+  function NoteController(noteListObject) {
+    noteList = noteListObject;
     this._note_markup = "";
     this._singleNoteView = "";
-    window.addEventListener("hashchange", this.insertNoteHTML);
+    window.addEventListener("hashchange", this.displayNote);
   }
 
   NoteController.prototype.setupView = function () {
-    var list_view = new NoteListView(this._noteList);
+    var list_view = new NoteListView(noteList);
     var note_markup = list_view.getHTML();
-    this._note_markup = note_markup;
+    noteMarkup = note_markup;
   };
 
-  NoteController.prototype.insertHTML = function (id) {
-    var element = document.getElementById(id);
-    element.innerHTML = this._note_markup;
+  NoteController.prototype.insertHTML = function () {
+    var element = document.getElementById('app');
+    element.innerHTML = noteMarkup;
   };
 
-  NoteController.prototype.insertNoteHTML = function () {
-    console.log("Triggered");
-    var hashNumber = location.hash.split("#")[1];
-    // debugger;
-    this.singleN;
-    var element = document.getElementById("app");
-    element.innerHTML = this._singleNoteView;
+  NoteController.prototype.displayNote = function() {
+    document.getElementById('app').innerHTML = getSingleNote();
   };
 
-  NoteController.prototype.singleN = function (id) {
-    var single_note = this._noteList.getNotes()[id]
-    this._singleNoteView = new SingleNoteView(single_note).getNoteHTML();
-  };
+  function getSingleNote() {
+    var note = noteList.getNotes()[getIdFromUrl(window.location)];
+    singleNoteView = new SingleNoteView(note);
+    return singleNoteView.getNoteHTML();
+  }
 
+  function getIdFromUrl(location) {
+    return location.hash.split('#')[1];
+  }
 
-
-  // window.addEventListener("hashchange", insertNoteHTML);
 
   exports.NoteController = NoteController;
+
 })(this);

@@ -1,17 +1,22 @@
-var note_list, controller, appElement;
+var note_list, controller, appDiv;
+
 function setupController() {
   note_list = new NoteList();
   controller = new NoteController(note_list);
 }
 
-function setupElement() {
-  appElement = document.getElementById("app");
+function mockAppDiv() {
+  appDiv = document.createElement('div', {id: 'app'} );
+
+  document.getElementById = function () {
+    return appDiv;
+  };
 }
 // start of tests
 describe("Controller", function() {
-  it("can be instantiated with a note list", function() {
+  it("can be instantiated as a new controller", function() {
     setupController();
-    assert.isTrue(controller._noteList === note_list);
+    assert.isTrue(controller instanceof NoteController);
   });
 
   it("can return a note form within the note list", function() {
@@ -25,32 +30,31 @@ describe("Controller", function() {
     setupController();
     note_list.addNote("Favourite drink: seltzer");
     controller.setupView();
-    assert.isTrue(controller._note_markup === '<ul><li><div><a href="#0">Favourite drink: sel</a></div></li></ul>' );
+    mockAppDiv();
+    controller.insertHTML();
+    assert.isTrue(appDiv.innerHTML === '<ul><li><div><a href="#0">Favourite drink: sel</a></div></li></ul>' );
   });
 
   it("can return note's text formatted in HTML", function () {
     setupController();
     note_list.addNote("Favourite drink: seltzer");
     controller.setupView();
-
-    var appDiv = document.createElement('div', {id: 'app'} );
-    document.getElementById = function () {
-      return appDiv;
-    }
-
+    mockAppDiv();
     controller.insertHTML('app');
 
-    setupElement();
-    assert.isTrue(appElement.innerHTML === controller._note_markup);
+    mockAppDiv();
+    assert.isTrue(appDiv.innerHTML === controller._note_markup);
   });
 
   it("Changes app div according to url", function() {
     setupController();
     note_list.addNote("Favourite drink: seltzer");
-    location.hash = "#0"
-
-    setupElement();
-    assert.isTrue(appElement.innerHTML === '<div>Favourite drink: seltzer</div>');
+    mockAppDiv();
+    location.hash = "#0";
+    setTimeout(function() {
+              assert.isTrue(appDiv.innerHTML === '<div>Favourite drink: seltzer</div>');
+            }, 3000
+          );
   });
 
 });
